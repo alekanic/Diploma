@@ -1,15 +1,6 @@
-FROM node:12
-
-# Создание директории приложения
-WORKDIR /app
-
-# Установка зависимостей, учитывая package.json и package-lock.json
-COPY package*.json ./gate-simulator
-
-RUN npm i
-
-# Копирование исходного кода приложения
-COPY . .
-
+FROM node:lts-alpine3.12
+WORKDIR /opt/app
+COPY /gate-simulator .
+RUN npm install
+CMD ["npm", "start"]
 EXPOSE 9999
-CMD [ "node", "app.js" ]
