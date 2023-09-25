@@ -4,7 +4,7 @@ services:
 
   node-app:
     build: .
-    image: node
+    image: node-app:1.0
     ports:
       - '9999:9999'
 
@@ -12,11 +12,8 @@ services:
 
     image: postgres:12-alpine
     ports:
-      - '9999-9999'
-    volumes:
-      - ./data:/var/lib/postgresql/data
+      - '3306:3306'
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=app
       - POSTGRES_PASSWORD=pass
-    container_name: PostgreSQL
