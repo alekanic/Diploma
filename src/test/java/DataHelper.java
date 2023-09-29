@@ -1,10 +1,6 @@
 import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
-
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
@@ -32,14 +28,27 @@ public class DataHelper {
         return months[new Random().nextInt(months.length)];
     }
 
-    // генерация валидного номера года
-    // текущий год + 6 лет максимум
+    public static String getInvalidFormatMonth() {
+        Random random = new Random();
+        var month = random.nextInt(10);
+        return String.valueOf(month);
+    }
+
     public static String getYear() {
+        // генерация валидного номера года
+        // текущий год + 6 лет максимум
+
         String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
         int currentYear = Integer.parseInt(currentDate);
         Random random = new Random();
         var validYear = currentYear + random.nextInt(6);
         return String.valueOf(validYear);
+    }
+
+    public static String getInvalidFormatYear() {
+        Random random = new Random();
+        var year = random.nextInt(10);
+        return String.valueOf(year);
     }
 
     // генерация имени
@@ -52,6 +61,12 @@ public class DataHelper {
     // генерация CVC/CVV
     public static String getCVV() {
         double CVV = Math.random() * 1000;
+        return String.valueOf(CVV);
+    }
+
+    public static String getInvalidFormatCVV() {
+        Random random = new Random();
+        var CVV = random.nextInt(99);
         return String.valueOf(CVV);
     }
 
