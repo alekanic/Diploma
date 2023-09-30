@@ -88,7 +88,7 @@ public class TestWIthInvalidData {
         filedOfCvv.setValue(DataHelper.getCVV());
 
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("//span[text()='Неверно указан срок действия карты']")).shouldBe(Condition.visible);
     }
 
     @Test
