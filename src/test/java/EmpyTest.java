@@ -25,17 +25,20 @@ public class EmpyTest {
     }
 
     @Test
-    //Сценарий 12 - проверяем отправку анкеты с пустыми полями
+    //Сценарий 14 - проверяем отправку анкеты с пустыми полями
 
     public void testWithEmptyFields() {
         buyButton.click();
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])[1]")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])[2]")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])[3]")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])[4]")).shouldBe(Condition.visible);
         $(By.xpath("//span[text()='Поле обязательно для заполнения']")).shouldBe(Condition.visible);
     }
 
     @Test
-    //Сценарий 13 - проверяем отправку анкеты с незаполненным полем "Номер карты"
+    //Сценарий 15 - проверяем отправку анкеты с незаполненным полем "Номер карты"
 
     public void testWithEmptyFieldOfCardNumber() {
         buyButton.click();
@@ -47,11 +50,11 @@ public class EmpyTest {
         filedOfCvv.setValue(DataHelper.getCVV());
 
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])")).shouldBe(Condition.visible);
     }
 
     @Test
-    //Сценарий 14 - проверяем отправку анкеты с данными в неверном формате в поле "Месяц"
+    //Сценарий 16 - проверяем отправку анкеты с данными в неверном формате в поле "Месяц"
 
     public void testWithEmptyFieldOfMonth() {
         buyButton.click();
@@ -61,11 +64,11 @@ public class EmpyTest {
         filedOfCvv.setValue(DataHelper.getCVV());
 
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])")).shouldBe(Condition.visible);
     }
 
     @Test
-    //Сценарий 15 - проверяем отправку анкеты с незаполненным полем "Год"
+    //Сценарий 17 - проверяем отправку анкеты с незаполненным полем "Год"
 
     public void testWithEmptyFieldOfYear() {
         buyButton.click();
@@ -75,11 +78,11 @@ public class EmpyTest {
         filedOfCvv.setValue(DataHelper.getCVV());
 
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])")).shouldBe(Condition.visible);
     }
 
     @Test
-    //Сценарий 16 - проверяем отправку анкеты с незаполненным полем "Владелец"
+    //Сценарий 18 - проверяем отправку анкеты с незаполненным полем "Владелец"
 
     public void testWithEmptyFieldOfOwner() {
         buyButton.click();
@@ -95,7 +98,7 @@ public class EmpyTest {
     }
 
     @Test
-    //Сценарий 17 - проверяем отправку анкеты с незаполненным полем "CVC/CVV"
+    //Сценарий 19 - проверяем отправку анкеты с незаполненным полем "CVC/CVV"
 
     public void testWithEmptyFieldOfCvv() {
         buyButton.click();
@@ -107,7 +110,7 @@ public class EmpyTest {
         filedOfOwner.setValue(DataHelper.getName());
 
         enterButton.click();
-        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+        $(By.xpath("(//*[text()='Неверный формат'])")).shouldBe(Condition.visible);
     }
 
 }

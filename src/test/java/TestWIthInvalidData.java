@@ -45,7 +45,24 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 6 - проверяем отправку анкеты с данными в неверном формате в поле "Месяц"
+    //Сценарий 6 - Проверяем отправку анкеты с картой со статусом DECLINED
+
+    public void testWithDeclinedCard() {
+        buyButton.click();
+        filedOfCardNumber.setValue(DataHelper.invalidCardNumber());
+
+        MonthAndYear fill = new MonthAndYear();
+        fill.validFillTheMonthAndYearFields();
+
+        filedOfOwner.setValue(DataHelper.getName());
+        filedOfCvv.setValue(DataHelper.getCVV());
+
+        enterButton.click();
+        failNotification.shouldBe(Condition.visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    //Сценарий 7 - проверяем отправку анкеты с данными в неверном формате в поле "Месяц"
 
     public void testWithInvalidFormatMonth() {
         buyButton.click();
@@ -60,7 +77,22 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 7 - проверяем отправку анкеты с закончившимся в текущем году сроком действия карты
+    //Сценарий 8 - проверяем отправку анкеты с данными в неверном формате в поле "Месяц"
+
+    public void testWithNonExistentFormatMonth() {
+        buyButton.click();
+        filedOfCardNumber.setValue(DataHelper.randomCardNumber());
+        filedOfMonth.setValue(DataHelper.getNonExistentFormatMonth());
+        filedOfYear.setValue(DataHelper.getYear());
+        filedOfOwner.setValue(DataHelper.getName());
+        filedOfCvv.setValue(DataHelper.getCVV());
+
+        enterButton.click();
+        $(By.xpath("//span[text()='Неверный формат']")).shouldBe(Condition.visible);
+    }
+
+    @Test
+    //Сценарий 9 - проверяем отправку анкеты с закончившимся в текущем году сроком действия карты
 
     public void testWithExpiredValidityPeriod() {
         buyButton.click();
@@ -77,7 +109,7 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 8 - проверяем отправку анкеты с закончившимся в текущем году сроком действия карты
+    //Сценарий 10 - проверяем отправку анкеты, когда в поле "Год" значение меньше текущего года
 
     public void testWithPreviousYear() {
         buyButton.click();
@@ -94,7 +126,7 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 9 - проверяем отправку анкеты, когда в поле "Год" значение больше текущего на 6 и более лет
+    //Сценарий 11 - проверяем отправку анкеты, когда в поле "Год" значение больше текущего на 6 и более лет
 
     public void testWitFutureYear() {
         buyButton.click();
@@ -111,7 +143,7 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 10 - проверяем отправку анкеты с данными в неверном формате в поле "Год"
+    //Сценарий 12 - проверяем отправку анкеты с данными в неверном формате в поле "Год"
 
     public void testWithInvalidFormatYear() {
         buyButton.click();
@@ -126,7 +158,7 @@ public class TestWIthInvalidData {
     }
 
     @Test
-    //Сценарий 11 - проверяем отправку анкеты с данными в неверном формате в поле "Год"
+    //Сценарий 13 - проверяем отправку анкеты с данными в неверном формате в поле "Год"
 
     public void testWithInvalidFormatCvv() {
         buyButton.click();

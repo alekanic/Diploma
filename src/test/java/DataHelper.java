@@ -20,6 +20,11 @@ public class DataHelper {
         return validNumber;
     }
 
+    public static String invalidCardNumber() {
+        String invalidNumber = "4444 4444 4444 4442";
+        return invalidNumber;
+    }
+
     // генерация валидного номера месяца
     public static String getMonth() {
         var months = new String[] {
@@ -31,6 +36,16 @@ public class DataHelper {
     public static String getInvalidFormatMonth() {
         Random random = new Random();
         var month = random.nextInt(10);
+        return String.valueOf(month);
+    }
+
+    public static String getNonExistentFormatMonth() {
+        var min = 13;
+        var max = 100;
+        var dif = max - min;
+
+        Random random = new Random();
+        var month = random.nextInt(dif);
         return String.valueOf(month);
     }
 
