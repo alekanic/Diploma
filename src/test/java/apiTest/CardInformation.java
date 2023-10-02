@@ -5,7 +5,6 @@ public class CardInformation {
     // Класс с данными для заполнения анкеты и методом заполнения анкеты
 
     private String Number;
-    private String invalidNumber;
     private String year;
     private String month;
     private String holder;

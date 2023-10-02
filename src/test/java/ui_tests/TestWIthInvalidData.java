@@ -1,12 +1,12 @@
-package UI_test;
+package ui_tests;
 
-import UI_test.DataHelper;
-import UI_test.MonthAndYear;
+import ui_tests.DataHelper;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import ui_tests.MonthAndYear;
 
 import java.time.Duration;
 
