@@ -1,3 +1,6 @@
+package UI_test;
+
+import UI_test.DataHelper;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;

@@ -1,3 +1,7 @@
+package UI_test;
+
+import UI_test.DataHelper;
+import UI_test.MonthAndYear;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
@@ -5,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
