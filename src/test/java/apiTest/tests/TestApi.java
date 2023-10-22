@@ -1,6 +1,9 @@
-package apiTest;
+package apiTest.tests;
 
+import apiTest.pages.Specification;
+import apiTest.test_data.CardInformation;
 import org.junit.jupiter.api.Test;
+import ui_tests.test_data.DataHelper;
 
 import static io.restassured.RestAssured.given;
 
@@ -8,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class TestApi {
 
     public class RegresTest {
-        private final static String URL = "https://localhost:8080";
+        private final static String URL = "http://localhost:8080";
     }
 
     @Test
@@ -16,9 +19,9 @@ public class TestApi {
         // Given - When - Then
         // Предусловия
         Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-        CardInformation reg = new CardInformation("4444 4444 4444 4441", "25", "12", "Ivanov", "123");
+        CardInformation reg = new CardInformation(DataHelper.validCardNumber(), DataHelper.getYear(), DataHelper.getMonth(), DataHelper.getName(), DataHelper.getCVV());
         given()
-                .baseUri("http://localhost:8080")
+                .baseUri(RegresTest.URL)
                 .body(reg)
                 .when()
                 .post("/api/v1/pay")
@@ -32,9 +35,9 @@ public class TestApi {
         // Given - When - Then
         // Предусловия
         Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-        CardInformation reg = new CardInformation("4444 4444 4444 4441", "25", "12", "Ivanov", "123");
+        CardInformation reg = new CardInformation(DataHelper.validCardNumber(), DataHelper.getYear(), DataHelper.getMonth(), DataHelper.getName(), DataHelper.getCVV());
         given()
-                .baseUri("http://localhost:8080")
+                .baseUri(RegresTest.URL)
                 .body(reg)
                 .when()
                 .post("/api/v1/credit")

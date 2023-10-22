@@ -1,17 +1,17 @@
-package apiTest;
+package apiTest.test_data;
 
 public class CardInformation {
 
     // Класс с данными для заполнения анкеты и методом заполнения анкеты
 
-    private String Number;
+    private String number;
     private String year;
     private String month;
     private String holder;
     private String cvc;
 
     public CardInformation(String number, String year, String month, String holder, String cvc) {
-        this.Number = number;
+        this.number = number;
         this.month = month;
         this.year = year;
         this.holder = holder;
@@ -19,7 +19,7 @@ public class CardInformation {
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
     public String getMonth() {
@@ -37,5 +37,6 @@ public class CardInformation {
     public String getCvc() {
         return cvc;
     }
-
 }
+
+

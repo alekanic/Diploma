@@ -1,4 +1,4 @@
-package ui_tests;
+package ui_tests.test_data;
 
 import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
