@@ -1,15 +1,10 @@
-package apiTest.test_data;
+package helpers;
 
+// Класс с данными для заполнения анкеты и методом заполнения анкеты
 public class CardInformation {
+    private String number, year, month, holder, cvc;
 
-    // Класс с данными для заполнения анкеты и методом заполнения анкеты
-
-    private String number;
-    private String year;
-    private String month;
-    private String holder;
-    private String cvc;
-
+    // Структура, содержащая всю информацию с карты
     public CardInformation(String number, String year, String month, String holder, String cvc) {
         this.number = number;
         this.month = month;
@@ -18,6 +13,7 @@ public class CardInformation {
         this.cvc = cvc;
     }
 
+    // Далее геттеры
     public String getNumber() {
         return number;
     }

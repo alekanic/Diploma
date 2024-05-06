@@ -1,38 +1,23 @@
 # Процедура запуска автотестов
 
-1. На компьютере должен быть установлен Docker.
-2. На компьютере должна быть установлена программа IntelliJ Idea.
-3. Открываем проект в IntelliJ Idea.
-4. Запускаем контейнеры в Docker. Для этого в терминале IntelliJ Idea вводим команду `docker compose up -d`
-5. Открываем приложение-эмулятор банковских сервисов.
-Открываем второй терминал в IntelliJ Idea и вводим команду:
-`java -jar artifacts/aqa-shop.jar`
-6. Запускаем автотесты.
-В командной строке вводим команду:
-`gradlew test`
+1. Клонировать репозиторий командой: `git clone https://github.com/alekanic/Diploma.git`
+2. Из ./src в скаченном репозитории, запустить Docker командой `docker compose up -d`
 
-### Запуск PostgreSQL
+## Для MySQL
 
-Для запуска данной БД достаточно проделанных действий, так как в файле 'application.properties' уже прописан запуск именно PostgheSQL.
+1. Запустить приложение-эмулятор банковских сервисов на MySQL:\
+`java -jar .\artifacts\aqa-shop\aqa-shop.jar --spring.datasource.url=jdbc:mysql://localhost:3306/app`\
+2. Запустить авто-тесты командой в консоли:
+`.\gradlew clean test -DdbUrl=jdbc:mysql://localhost:3306/app`
 
-```
-spring.credit-gate.url=http://localhost:9999/credit
-spring.payment-gate.url=http://localhost:9999/payment
-spring.datasource.url=jdbc:postgresql://localhost:5432/app
-spring.datasource.username=app
-spring.datasource.password=pass
-```
+## Для PostgreSQL
 
-### Запуск MySQL
+1. В терминале №1 запустить приложение-эмулятор банковских сервисов на PostgreSQL:\
+`java -jar .\artifacts\aqa-shop\aqa-shop.jar --spring.datasource.url=jdbc:postgresql://localhost:5432/app`
+2. В терминале №2 запустить авто-тесты командой в консоли:
+`.\gradlew clean test -DdbUrl=jdbc:postgresql://localhost:5432/app`
 
-Для запуска данной БД необходимо изменить файл 'application.properties' следующим образом:
+## Создание отчета Allure
 
-```
-spring.credit-gate.url=http://localhost:9999/credit
-spring.payment-gate.url=http://localhost:9999/payment
-spring.datasource.url=jdbc:mysql://localhost:3306/app
-spring.datasource.username=app
-spring.datasource.password=pass
-```
-
-И далее повторяем действия по запуску автотестов 1-6.
++ Ввести следующую команду в терминале:
+`.\gradlew allureServe`

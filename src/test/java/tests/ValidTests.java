@@ -1,10 +1,10 @@
-package ui_tests.tests;
+package tests;
 
-import apiTest.pages.PageObject;
+import pages.PageObject;
 import org.junit.jupiter.api.BeforeEach;
-import ui_tests.test_data.DataHelper;
+import helpers.DataGeneration;
 import org.junit.jupiter.api.Test;
-import ui_tests.test_data.MonthAndYear;
+import helpers.MonthAndYear;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -38,11 +38,11 @@ public class ValidTests {
     public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.validCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.validCardNumber());
         MonthAndYear fill = new MonthAndYear();
         fill.validFillTheMonthAndYearFields();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.successNotification();
     }
@@ -53,11 +53,11 @@ public class ValidTests {
     public void successfulTestWithCreditGate() {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
-        page.fillTheFiledOfCardNumber(DataHelper.validCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.validCardNumber());
         MonthAndYear fill = new MonthAndYear();
         fill.validFillTheMonthAndYearFields();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.successNotification();
     }

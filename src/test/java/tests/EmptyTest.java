@@ -1,9 +1,9 @@
-package ui_tests.tests;
+package tests;
 
-import apiTest.pages.PageObject;
+import pages.PageObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui_tests.test_data.DataHelper;
+import helpers.DataGeneration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -29,10 +29,10 @@ public class EmptyTest {
     public void fillWithEmptyFieldOfCardNumber() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormat();
     }
@@ -43,10 +43,10 @@ public class EmptyTest {
     public void testWithEmptyFieldOfMonth() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormat();
     }
@@ -57,10 +57,10 @@ public class EmptyTest {
     public void testWithEmptyFieldOfYear() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormat();
     }
@@ -71,10 +71,10 @@ public class EmptyTest {
     public void testWithEmptyFieldOfOwner() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.essentialField();
 
@@ -86,10 +86,10 @@ public class EmptyTest {
     public void testWithEmptyFieldOfCvv() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
         page.pressTheEnterButton();
         page.invalidFormat();
     }

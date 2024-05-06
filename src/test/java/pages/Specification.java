@@ -1,4 +1,4 @@
-package apiTest.pages;
+package pages;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

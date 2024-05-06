@@ -1,9 +1,9 @@
-package apiTest.tests;
+package tests;
 
-import apiTest.pages.Specification;
-import apiTest.test_data.CardInformation;
+import pages.Specification;
+import helpers.CardInformation;
 import org.junit.jupiter.api.Test;
-import ui_tests.test_data.DataHelper;
+import helpers.DataGeneration;
 
 import static io.restassured.RestAssured.given;
 
@@ -19,7 +19,7 @@ public class TestApi {
         // Given - When - Then
         // Предусловия
         Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-        CardInformation reg = new CardInformation(DataHelper.validCardNumber(), DataHelper.getYear(), DataHelper.getMonth(), DataHelper.getName(), DataHelper.getCVV());
+        CardInformation reg = new CardInformation(DataGeneration.validCardNumber(), DataGeneration.getYear(), DataGeneration.getMonth(), DataGeneration.getName(), DataGeneration.getCVV());
         given()
                 .baseUri(RegresTest.URL)
                 .body(reg)
@@ -35,7 +35,7 @@ public class TestApi {
         // Given - When - Then
         // Предусловия
         Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-        CardInformation reg = new CardInformation(DataHelper.validCardNumber(), DataHelper.getYear(), DataHelper.getMonth(), DataHelper.getName(), DataHelper.getCVV());
+        CardInformation reg = new CardInformation(DataGeneration.validCardNumber(), DataGeneration.getYear(), DataGeneration.getMonth(), DataGeneration.getName(), DataGeneration.getCVV());
         given()
                 .baseUri(RegresTest.URL)
                 .body(reg)

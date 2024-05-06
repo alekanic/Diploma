@@ -1,17 +1,11 @@
-package ui_tests.tests;
+package tests;
 
-import apiTest.pages.PageObject;
-import ui_tests.test_data.DataHelper;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import pages.PageObject;
+import helpers.DataGeneration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import ui_tests.test_data.MonthAndYear;
+import helpers.MonthAndYear;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -28,11 +22,11 @@ public class TestWIthInvalidData {
     public void testWithInvalidCardNumber() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.invalidCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.invalidCardNumber());
         MonthAndYear fill = new MonthAndYear();
         fill.validFillTheMonthAndYearFields();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.failNotification();
     }
@@ -46,8 +40,8 @@ public class TestWIthInvalidData {
         page.fillTheFiledOfCardNumber("4444 4444 4444 4442");
         MonthAndYear fill = new MonthAndYear();
         fill.validFillTheMonthAndYearFields();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.failNotification();
     }
@@ -58,11 +52,11 @@ public class TestWIthInvalidData {
     public void testWithInvalidFormatMonth() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getInvalidFormatMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getInvalidFormatMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormatMessage();
     }
@@ -73,11 +67,11 @@ public class TestWIthInvalidData {
     public void testWithNonExistentFormatMonth() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getNonExistentFormatMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getNonExistentFormatMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormatMessage();
     }
@@ -88,11 +82,11 @@ public class TestWIthInvalidData {
     public void testWithExpiredValidityPeriod() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
         MonthAndYear expiredMonth = new MonthAndYear();
         expiredMonth.fillTheExpiredInThisYearValidityPeriod();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidExpirationDateMessage();
     }
@@ -103,11 +97,11 @@ public class TestWIthInvalidData {
     public void testWithPreviousYear() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
         MonthAndYear expiredMonth = new MonthAndYear();
         expiredMonth.fillTheExpiredValidPeriod();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.ExpirationDateMessage();
     }
@@ -118,11 +112,11 @@ public class TestWIthInvalidData {
     public void testWitFutureYear() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
         MonthAndYear expiredMonth = new MonthAndYear();
         expiredMonth.fillWithFutureDate();
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidExpirationDateMessage();
     }
@@ -133,11 +127,11 @@ public class TestWIthInvalidData {
     public void testWithInvalidFormatYear() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfYear(DataHelper.getInvalidFormatYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfYear(DataGeneration.getInvalidFormatYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.invalidFormatMessage();
     }
@@ -148,11 +142,11 @@ public class TestWIthInvalidData {
     public void testWithInvalidFormatCvv() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFiledOfCardNumber(DataHelper.randomCardNumber());
-        page.fillTheFieldOfMonth(DataHelper.getMonth());
-        page.fillTheFieldOfYear(DataHelper.getYear());
-        page.fillTheFieldOfName(DataHelper.getName());
-        page.fillTheFieldOfCvv(DataHelper.getInvalidFormatCVV());
+        page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
+        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        page.fillTheFieldOfYear(DataGeneration.getYear());
+        page.fillTheFieldOfName(DataGeneration.getName());
+        page.fillTheFieldOfCvv(DataGeneration.getInvalidFormatCVV());
         page.pressTheEnterButton();
         page.invalidFormatMessage();
     }

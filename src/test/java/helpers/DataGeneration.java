@@ -1,4 +1,4 @@
-package ui_tests.test_data;
+package helpers;
 
 import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
@@ -7,21 +7,22 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
-public class DataHelper {
+// генерация рандомных данных карты
+public class DataGeneration {
 
+    private static final Faker ruFaker = new Faker(new Locale("ru", "RU"));
 
-    // генерация рандомных данных карты
-    public static String randomCardNumber() {
-        Faker faker = new Faker();
-        String cardNumber = faker.finance().creditCard(CreditCardType.MASTERCARD);
+    public static String generateCardNumber() { // генерирует рандомный номер карты
+        String cardNumber = ruFaker.finance().creditCard(CreditCardType.MASTERCARD);
         return cardNumber;
     }
 
-    public static String validCardNumber() {
+    public static String validCardNumber() { // возвращает валидный номер карты
         String validNumber = "4444 4444 4444 4441";
         return validNumber;
     }
 
+    // возвращает НЕ валидный номер карты
     public static String invalidCardNumber() {
         String invalidNumber = "4444 4444 4444 4442";
         return invalidNumber;

@@ -1,6 +1,5 @@
-package ui_tests.test_data;
+package helpers;
 
-import ui_tests.test_data.DataHelper;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
@@ -32,8 +31,8 @@ public class MonthAndYear {
         // Если равен, то месяц должен быть больше текущего на 1
         // Если текущий месяц = 12, то год должен быть +1
 
-        var getYear = DataHelper.getYear();
-        var getMonth = DataHelper.getMonth();
+        var getYear = DataGeneration.getYear();
+        var getMonth = DataGeneration.getMonth();
 
         if (getYear == currentYear) {                            // Если полученное значение равно текущему году
 
@@ -56,7 +55,7 @@ public class MonthAndYear {
 
         filedOfYear.setValue(currentYear);                                    // ставим текущий год
 
-        var getMonth = DataHelper.getMonth();
+        var getMonth = DataGeneration.getMonth();
 
         if (Integer.parseInt(getMonth) < Integer.parseInt(currentMonth)) {    // если рандомный месяц меньше текущего,
             filedOfMonth.setValue(getMonth);                                  // то оставляем его
@@ -68,7 +67,7 @@ public class MonthAndYear {
 
     public void fillTheExpiredValidPeriod() {
 
-        filedOfMonth.setValue(DataHelper.getMonth());                       // устанавливаем рандомный месяц
+        filedOfMonth.setValue(DataGeneration.getMonth());                       // устанавливаем рандомный месяц
 
         var year = Integer.parseInt(currentYear);                           // вычисляем рандомный прошедший год
 
@@ -85,7 +84,7 @@ public class MonthAndYear {
 
     public void fillWithFutureDate() {
 
-        filedOfMonth.setValue(DataHelper.getMonth());                       // устанавливаем рандомный месяц
+        filedOfMonth.setValue(DataGeneration.getMonth());                       // устанавливаем рандомный месяц
 
         var year = Integer.parseInt(currentYear);                           // вычисляем рандомный прошедший год
 
