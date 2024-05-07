@@ -32,6 +32,7 @@ public class CreditApiTests {
 
     }
 
+    @Epics(value = "Валидные данные")
     @Test
     @Description(value = "Проверяем открытие анкеты после нажатия на кнопку КУПИТЬ В КРЕДИТ")
     
