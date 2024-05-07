@@ -196,8 +196,7 @@ public void successfulTestWithPaymentGate() {
     }
 
     @Test
-    @Description(value = "проверяем отправку анкеты с закончившимся в текущем году сроком действия карты
-    ")
+    @Description(value = "проверяем отправку анкеты с закончившимся в текущем году сроком действия карты")
 
     public void testWithExpiredValidityPeriod() {
         PageObject page = new PageObject();
