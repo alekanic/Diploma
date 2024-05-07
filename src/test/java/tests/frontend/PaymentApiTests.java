@@ -1,9 +1,13 @@
 package tests;
 
+import helpers.CardInformation;
+import io.qameta.allure.Description;
 import pages.PageObject;
+import helpers.MonthAndYear;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import helpers.DataGeneration;
+import pages.Specification;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -15,23 +19,6 @@ public class PaymentApiTests {
       open("http://localhost:8080");
   }
 
-
-@Test
-@Description(value = "")
-void successfulTestWithPaymentGate() {
-    // Given - When - Then
-    // Предусловия
-    Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-    CardInformation reg = new CardInformation(DataGeneration.validCardNumber(), DataGeneration.getYear(), DataGeneration.getMonth(), DataGeneration.getName(), DataGeneration.getCVV());
-    given()
-            .baseUri(RegresTest.URL)
-            .body(reg)
-            .when()
-            .post("/api/v1/pay")
-            .then()
-            .statusCode(200);
-
-}
 
 @Test
 @Description(value = "Проверяем открытие анкеты после нажатия на кнопку КУПИТЬ")

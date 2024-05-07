@@ -1,9 +1,14 @@
-package tests;
+package tests.frontend;
 
+import helpers.CardInformation;
+import helpers.MonthAndYear;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epics;
 import pages.PageObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import helpers.DataGeneration;
+import pages.Specification;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -15,24 +20,6 @@ public class CreditApiTests {
         open("http://localhost:8080");
     }
 
-    @Test
-    @Description(value = "")
-    void successfulTestWithCreditGate() {
-        // Given - When - Then
-        // Предусловия
-        Specification.installSpecification(Specification.requestSpec(RegresTest.URL), Specification.responseSpecOK200());
-        CardInformation reg = new CardInformation(DataGeneration.validCardNumber(), DataGeneration.getYear(), DataGeneration.getMonth(), DataGeneration.getName(), DataGeneration.getCVV());
-        given()
-                .baseUri(RegresTest.URL)
-                .body(reg)
-                .when()
-                .post("/api/v1/credit")
-                .then()
-                .statusCode(200);
-
-    }
-
-    @Epics(value = "Валидные данные")
     @Test
     @Description(value = "Проверяем открытие анкеты после нажатия на кнопку КУПИТЬ В КРЕДИТ")
     
