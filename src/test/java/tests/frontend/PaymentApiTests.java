@@ -1,4 +1,4 @@
-package tests;
+package tests.frontend;
 
 import helpers.CardInformation;
 import io.qameta.allure.Description;
