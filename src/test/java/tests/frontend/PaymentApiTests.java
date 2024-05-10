@@ -1,18 +1,30 @@
 package tests.frontend;
 
+import com.google.gson.Gson;
 import helpers.CardInformation;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.Test;
 import pages.PageObject;
-import helpers.MonthAndYear;
 import helpers.DataGeneration;
 import pages.Specification;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+@Epic("Backend тестирование функционала Путешествие дня")
+@Feature("Покупка тура по карте")
 public class PaymentApiTests {
+    private static CardInformation.CardData CardInformation;
+    private static final RequestSpecification spec = new RequestSpecBuilder().setBaseUri("http://localhost").setPort(9999)
+            .setAccept(ContentType.JSON).setContentType(ContentType.JSON).log(LogDetail.ALL).build();
+    private static final String paymentUrl = "/payment";
 
   @BeforeEach
   void setup() {
@@ -24,9 +36,11 @@ public class PaymentApiTests {
 @Description(value = "Проверяем открытие анкеты после нажатия на кнопку КУПИТЬ")
 
 public void openFormAfterClickOnButtonBuy() {
+    open("http://localhost:8080");
     PageObject page = new PageObject();
     page.openFormAfterClickOnButtonBuy();
 }
+
 
 @Test
 @Description(value = "проверяем отправку валидных данных через сервис платежей (Payment Gate)")
@@ -35,8 +49,7 @@ public void successfulTestWithPaymentGate() {
     PageObject page = new PageObject();
     page.pressTheBuyButton();
     page.fillTheFiledOfCardNumber(DataGeneration.validCardNumber());
-    MonthAndYear fill = new MonthAndYear();
-    fill.validFillTheMonthAndYearFields();
+    // добавить дату
     page.fillTheFieldOfName(DataGeneration.getName());
     page.fillTheFieldOfCvv(DataGeneration.getCVV());
     page.pressTheEnterButton();
@@ -57,8 +70,7 @@ public void successfulTestWithPaymentGate() {
     public void fillWithEmptyFieldOfCardNumber() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -72,7 +84,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -86,7 +98,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -100,8 +112,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.essentialField();
@@ -115,8 +126,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.pressTheEnterButton();
         page.invalidFormat();
@@ -129,8 +139,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.invalidCardNumber());
-        MonthAndYear fill = new MonthAndYear();
-        fill.validFillTheMonthAndYearFields();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -144,8 +153,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber("4444 4444 4444 4442");
-        MonthAndYear fill = new MonthAndYear();
-        fill.validFillTheMonthAndYearFields();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -160,7 +168,7 @@ public void successfulTestWithPaymentGate() {
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
         page.fillTheFieldOfMonth(DataGeneration.getInvalidFormatMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -174,8 +182,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getNonExistentFormatMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -189,8 +196,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillTheExpiredInThisYearValidityPeriod();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -204,8 +210,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillTheExpiredValidPeriod();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -219,8 +224,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillWithFutureDate();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -234,7 +238,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        // добавить дату
         page.fillTheFieldOfYear(DataGeneration.getInvalidFormatYear());
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
@@ -249,8 +253,7 @@ public void successfulTestWithPaymentGate() {
         PageObject page = new PageObject();
         page.pressTheBuyButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getInvalidFormatCVV());
         page.pressTheEnterButton();

@@ -1,7 +1,6 @@
 package tests.frontend;
 
 import helpers.CardInformation;
-import helpers.MonthAndYear;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epics;
 import pages.PageObject;
@@ -35,8 +34,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.validCardNumber());
-        MonthAndYear fill = new MonthAndYear();
-        fill.validFillTheMonthAndYearFields();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -57,8 +55,7 @@ public class CreditApiTests {
     public void fillWithEmptyFieldOfCardNumber() {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -72,7 +69,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -86,7 +83,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -100,8 +97,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
         page.essentialField();
@@ -115,8 +111,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.pressTheEnterButton();
         page.invalidFormat();
@@ -129,8 +124,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.invalidCardNumber());
-        MonthAndYear fill = new MonthAndYear();
-        fill.validFillTheMonthAndYearFields();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -144,8 +138,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber("4444 4444 4444 4442");
-        MonthAndYear fill = new MonthAndYear();
-        fill.validFillTheMonthAndYearFields();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -160,7 +153,7 @@ public class CreditApiTests {
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
         page.fillTheFieldOfMonth(DataGeneration.getInvalidFormatMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -174,8 +167,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getNonExistentFormatMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -189,8 +181,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillTheExpiredInThisYearValidityPeriod();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -204,8 +195,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillTheExpiredValidPeriod();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -219,8 +209,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        MonthAndYear expiredMonth = new MonthAndYear();
-        expiredMonth.fillWithFutureDate();
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
         page.pressTheEnterButton();
@@ -234,7 +223,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
+        // добавить дату
         page.fillTheFieldOfYear(DataGeneration.getInvalidFormatYear());
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getCVV());
@@ -249,8 +238,7 @@ public class CreditApiTests {
         PageObject page = new PageObject();
         page.pressTheCreditButton();
         page.fillTheFiledOfCardNumber(DataGeneration.generateCardNumber());
-        page.fillTheFieldOfMonth(DataGeneration.getMonth());
-        page.fillTheFieldOfYear(DataGeneration.getYear());
+        // добавить дату
         page.fillTheFieldOfName(DataGeneration.getName());
         page.fillTheFieldOfCvv(DataGeneration.getInvalidFormatCVV());
         page.pressTheEnterButton();
